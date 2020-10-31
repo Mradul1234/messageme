@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MessageMe</title>
+    <%= favicon_link_tag %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="ui tiny menu">
+    <div class="ui container">
+      <%= link_to "Chatroom", root_path , class:"item"%>
+      <a class="item">
+      Messages
+      </a>
+    <div class="right menu">
+       
+        
+       
+      <div class="ui dropdown item">
+        Language <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item">English</a>
+          <a class="item">Russian</a>
+          <a class="item">Spanish</a>
+        </div>
+      </div>
+           
+          <% if logged_in? %>
+            <div class="item">
+              <%= link_to 'Logout', logout_path, method: :delete, class:"item"%>
+            </div>
+          <% else %>
+            <div class="item">
+              <%= link_to 'Login', login_path,   class:"item"%>
+              <div class="item">Sign Up</div>
+               
+            </div>
+          <% end %>
+
+           
+      </div>
+      </div>
+    </div>
+    <div class="ui container">
+      <%= flash[:notice] %>
+    <%= yield %>
+    </div>
+  </body>
+</html>
